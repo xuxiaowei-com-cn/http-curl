@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "http-dll", "http-dll\http-dll.vcxproj", "{753213AC-79BB-4632-A40B-1025EFC50392}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Debug|x64.ActiveCfg = Debug|x64
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Debug|x64.Build.0 = Debug|x64
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Debug|x86.ActiveCfg = Debug|Win32
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Debug|x86.Build.0 = Debug|Win32
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Release|x64.ActiveCfg = Release|x64
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Release|x64.Build.0 = Release|x64
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Release|x86.ActiveCfg = Release|Win32
+		{753213AC-79BB-4632-A40B-1025EFC50392}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBC51B5B-EF00-4638-A6AD-0FF87919B0BB}
+	EndGlobalSection
+EndGlobal
