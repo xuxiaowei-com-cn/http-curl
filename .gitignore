@@ -15,6 +15,7 @@
 /http-dll/[Dd]ebug/
 [Dd]ebugPublic/
 /[Rr]elease/
+/http-dll/[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
