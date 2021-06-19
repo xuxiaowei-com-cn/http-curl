@@ -12,6 +12,7 @@
 
 # Build results
 /[Dd]ebug/
+/http-dll/[Dd]ebug/
 [Dd]ebugPublic/
 /[Rr]elease/
 [Rr]eleases/
