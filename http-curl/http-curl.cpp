@@ -1,5 +1,3 @@
-#define BUILDING_LIBCURL // 解决：无法解析的外部符号 __imp__curl_easy_init
-
 #include <iostream> // 提供：cout、string
 #include <curl/curl.h> // 提供：curl
 
