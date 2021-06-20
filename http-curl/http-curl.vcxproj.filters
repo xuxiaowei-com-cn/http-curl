@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="http-dll.cpp">
+    <ClCompile Include="http-curl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
