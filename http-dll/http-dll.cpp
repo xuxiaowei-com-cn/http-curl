@@ -34,7 +34,7 @@ int http(const string url)
 	code = curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str()); // 设置 URL，参见：https://curl.se/libcurl/c/curl_easy_setopt.html
 	code = curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, cb); // 将所有数据发送到此函数，参见：https://curl.se/libcurl/c/CURLOPT_WRITEFUNCTION.html
 	code = curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void*)&chunk); // 我们将‘chunk’结构传递给回调函数，参见：https://curl.se/libcurl/c/CURLOPT_WRITEFUNCTION.html
-	
+
 	code = curl_easy_perform(curl_handle); // 执行阻塞文件传输，参见：https://curl.se/libcurl/c/curl_easy_perform.html
 
 	code = curl_easy_getinfo(curl_handle, CURLINFO_RESPONSE_CODE, &http_code); // 获取 http 响应代码，参见：https://curl.se/libcurl/c/CURLINFO_RESPONSE_CODE.html
@@ -44,7 +44,7 @@ int http(const string url)
 	cout << "http_code：" << http_code << endl;
 	cout << "response_data：" << chunk << endl;
 
-	if (code == CURLcode::CURLE_OK) 
+	if (code == CURLcode::CURLE_OK)
 	{
 		// curl 正常
 
@@ -64,7 +64,14 @@ int main()
 {
 	string url = "http://127.0.0.1:8080/ma";
 
-	http(url);
+	int curl_code = http(url);
+
+	cout << "curl_code：" << curl_code << endl;
+
+	cout << endl;
+	cout << "curl 响应代码：" << endl;
+	cout << "CURLE_OK（正常）：" << CURLE_OK << endl;
+	cout << "CURLE_COULDNT_CONNECT（无法连接）：" << CURLcode::CURLE_COULDNT_CONNECT << endl;
 
 	return 0;
 }
