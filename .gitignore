@@ -11,11 +11,9 @@
 *.userprefs
 
 # Build results
-/[Dd]ebug/
-/http-curl/[Dd]ebug/
+[Dd]ebug/
 [Dd]ebugPublic/
-/[Rr]elease/
-/http-curl/[Rr]elease/
+[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
