@@ -28,6 +28,7 @@ int http(const string url)
 	CURL* curl_handle = curl_easy_init(); // 启动 libcurl 简单会话，参见：https://curl.se/libcurl/c/curl_easy_init.html
 
 	int code; // curl 代码
+	int http_code; // http 代码
 	string chunk; // http 响应
 
 	code = curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str()); // 设置 URL，参见：https://curl.se/libcurl/c/curl_easy_setopt.html
@@ -36,12 +37,23 @@ int http(const string url)
 	
 	code = curl_easy_perform(curl_handle); // 执行阻塞文件传输，参见：https://curl.se/libcurl/c/curl_easy_perform.html
 
+	code = curl_easy_getinfo(curl_handle, CURLINFO_RESPONSE_CODE, &http_code); // 获取 http 响应代码，参见：https://curl.se/libcurl/c/CURLINFO_RESPONSE_CODE.html
+
 	curl_easy_cleanup(curl_handle); // 结束一个 libcurl 简单句柄，参见：https://curl.se/libcurl/c/curl_easy_cleanup.html
 
+	cout << "http_code：" << http_code << endl;
 	cout << "response_data：" << chunk << endl;
 
-	if (code == CURLcode::CURLE_OK) {
-		// 正常响应
+	if (code == CURLcode::CURLE_OK) 
+	{
+		// curl 正常
+
+		if (http_code == 200)
+		{
+			// http 正常
+
+		}
+
 	}
 
 	return code;
