@@ -1,5 +1,6 @@
 #include <iostream> // 提供：cout、string
 #include <curl/curl.h> // 提供：curl
+#include <json/json.h> // 提供：json
 
 using namespace std;
 
@@ -60,6 +61,20 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 		{
 			// http 正常
 
+			const char* str = chunk.data();
+
+			Json::CharReaderBuilder b;
+			Json::CharReader* reader(b.newCharReader());
+			Json::Value root;
+			JSONCPP_STRING errs;
+			bool ok = reader->parse(str, str + strlen(str), &root, &errs);
+			if (ok && errs.size() == 0)
+			{
+				string uuid = root["uuid"].asString();
+
+				cout << "uuid：" << uuid << endl;
+			}
+			delete reader;
 		}
 
 	}
