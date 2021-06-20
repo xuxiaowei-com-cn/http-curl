@@ -40,6 +40,12 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 	}
 	else if (method == "POST") {
 		// POST 请求
+
+		// Header
+		struct curl_slist* headers = NULL;
+		headers = curl_slist_append(headers, "content-type:application/json");
+		code = curl_easy_setopt(curl_handle, CURLOPT_HTTPHEADER, headers);
+
 		code = curl_easy_setopt(curl_handle, CURLOPT_POSTFIELDS, body); // 设置POST的数据
 	}
 	else {
