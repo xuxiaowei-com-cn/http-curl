@@ -2,7 +2,7 @@
 
 #include <iostream> // 提供：cout、string
 #include <curl/curl.h> // 提供：curl
-#include <json/json.h> // 提供：json
+// #include <json/json.h> // 提供：json
 
 using namespace std;
 
@@ -22,8 +22,11 @@ static size_t cb(void* data, size_t size, size_t nmemb, void* userp)
 }
 
 // http 请求
-int http(string url, string method, char body[], int& http_code, string& chunk)
+int http(char url[], int method, char body[], int& http_code)
 {
+
+	string chunk;
+
 	char* version = curl_version(); // libcurl 版本
 	cout << "curl_version：" << version << endl;
 
@@ -31,16 +34,16 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 
 	int code; // curl 代码
 
-	code = curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str()); // 设置 URL，参见：https://curl.se/libcurl/c/curl_easy_setopt.html
+	code = curl_easy_setopt(curl_handle, CURLOPT_URL, url); // 设置 URL，参见：https://curl.se/libcurl/c/curl_easy_setopt.html
 	code = curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, cb); // 将所有数据发送到此函数，参见：https://curl.se/libcurl/c/CURLOPT_WRITEFUNCTION.html
 	code = curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void*)&chunk); // 我们将‘chunk’结构传递给回调函数，参见：https://curl.se/libcurl/c/CURLOPT_WRITEFUNCTION.html
 
-	if (method == "GET")
+	if (method == 1)
 	{
 		// GET 请求
 
 	}
-	else if (method == "POST") {
+	else if (method == 2) {
 		// POST 请求
 
 		// Header
@@ -69,6 +72,7 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 		{
 			// http 正常
 
+			/*
 			const char* str = chunk.data();
 
 			Json::CharReaderBuilder b;
@@ -83,9 +87,12 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 				cout << "uuid：" << uuid << endl;
 			}
 			delete reader;
+			*/
 		}
 
 	}
+
+	// cout << "response_data：" << chunk << endl;
 
 	return code;
 }
@@ -93,20 +100,19 @@ int http(string url, string method, char body[], int& http_code, string& chunk)
 
 int main()
 {
-	string url = "http://127.0.0.1:8080/ma";
-	string method = "POST";
+	char url[] = "http://127.0.0.1:8080/ma";
+	int method = 2;
 	char body[] = "{\"msg\"=\"hello\"}";
 
 	int http_code; // http 代码
 	string chunk; // http 响应
 
-	int curl_code = http(url, method, body, http_code, chunk);
+	int curl_code = http(url, method, body, http_code);
 
 	cout << endl;
 	cout << "curl 调用结束：" << endl;
 	cout << "curl_code：" << curl_code << endl;
 	cout << "http_code：" << http_code << endl;
-	cout << "response_data：" << chunk << endl;
 
 	cout << endl;
 	cout << "curl 响应代码：" << endl;
