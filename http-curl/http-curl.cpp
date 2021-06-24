@@ -204,18 +204,16 @@ int http(char url[1024], int method, char body[1024], char response[1024])
 			// http Õý³£
 
 			/*
-			const char* str = chunk.data();
-
-			Json::CharReaderBuilder b;
-			Json::CharReader* reader(b.newCharReader());
+			Json::CharReaderBuilder readerBuilder;
+			Json::CharReader* reader(readerBuilder.newCharReader());
 			Json::Value root;
 			JSONCPP_STRING errs;
-			bool ok = reader->parse(str, str + strlen(str), &root, &errs);
+			bool ok = reader->parse(response_ansi_char, response_ansi_char + strlen(response_ansi_char), &root, &errs);
 			if (ok && errs.size() == 0)
 			{
-				string uuid = root["uuid"].asString();
+				string msg = root["msg"].asString();
 
-				cout << "uuid£º" << uuid << endl;
+				cout << "msg£º" << msg << endl;
 			}
 			delete reader;
 			*/
